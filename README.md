@@ -1,130 +1,111 @@
-# Εισαγωγή στο Angular Framework
+Εισαγωγή στο Angular Framework
+Βήμα 1: Απλή δέσμευση χαρακτηριστικών (one way binding)
 
-## Βήμα 0: Προετοιμασία και βασικές ενέργειες
+    Χρήση του placeholder {{ <atribute_name > }} για τη δεσμευση του χαρακτηριστικού attribute_name στο template του component.
+    Αν το χαρακτηριστικό της κλάσης είναι αντικείμενο τότε χρησιμοποιούμε τη γνωστή σύνταξη {{ <object_name>.<attribute_name> }}.
 
-- Εγκατάσταση του Angular CLI
+Βήμα 0: Προετοιμασία και βασικές ενέργειες
 
-  ```bash
-  npm install -g @angular/cli@latest
-  ```
+    Εγκατάσταση του Angular CLI
 
-- Δημιουργία ενός νέου Angular Project
+    npm install -g @angular/cli@latest
 
-  ```bash
-  ng new angular-introduction --standalone --skip-tests
-  ```
+    Δημιουργία ενός νέου Angular Project
 
-- Επεμβάσεις στο αρχείο `ts.config.json`
+    ng new angular-introduction --standalone --skip-tests
 
-  ```json
-  {
-  ...
-  "compilerOptions": {
-      ...
-      "baseUrl": "./",
-      "strict": false,
-      ...
-  }
-  ...
-  }
-  ```
+    Επεμβάσεις στο αρχείο ts.config.json
 
-- Εκκίνηση του Angular Project
+    {
+    ...
+    "compilerOptions": {
+        ...
+        "baseUrl": "./",
+        "strict": false,
+        ...
+    }
+    ...
+    }
 
-  ```bash
-  ❯ ng serve
-  Initial chunk files | Names         | Raw size
-  polyfills.js        | polyfills     | 83.60 kB |
-  main.js             | main          |  1.67 kB |
-  styles.css          | styles        | 95 bytes |
+    Εκκίνηση του Angular Project
 
-                      | Initial total | 85.36 kB
+    ❯ ng serve
+    Initial chunk files | Names         | Raw size
+    polyfills.js        | polyfills     | 83.60 kB |
+    main.js             | main          |  1.67 kB |
+    styles.css          | styles        | 95 bytes |
 
-  Application bundle generation complete. [1.241 seconds]
+                        | Initial total | 85.36 kB
 
-  Watch mode enabled. Watching for file changes...
-  ➜  Local:   http://localhost:4200/
-  ➜  press h + enter to show help
-  ```
+    Application bundle generation complete. [1.241 seconds]
 
-- Η εφαρμογή είναι διαθέσιμη στη διεύθυνση `http://localhost:4200/`
+    Watch mode enabled. Watching for file changes...
+    ➜  Local:   http://localhost:4200/
+    ➜  press h + enter to show help
 
-- Δημιουργία online repository στο GitHub (`angular-introduction`) και αποστολή του κώδικα
+    Η εφαρμογή είναι διαθέσιμη στη διεύθυνση http://localhost:4200/
 
-  ```bash
-  git remote add origin git@github.com:christodoulos/angular-introduction.git
-  git push -u origin main
-  ```
+    Δημιουργία online repository στο GitHub (angular-introduction) και αποστολή του κώδικα
 
-- Δημιουργία του repository `<username>.github.io` αν δεν υπάρχει ήδη.
+    git remote add origin git@github.com:christodoulos/angular-introduction.git
+    git push -u origin main
 
-- Προσθήκη δυνατότητας deployment στις σελίδες gh-pages του GitHub
+    Δημιουργία του repository <username>.github.io αν δεν υπάρχει ήδη.
 
-  ```bash
-  ng add angular-cli-ghpages
-  ```
+    Προσθήκη δυνατότητας deployment στις σελίδες gh-pages του GitHub
 
-- Προσθήκη του _deploy_ script στο αρχείο `package.json`
+    ng add angular-cli-ghpages
 
-  ```json
-  {
-  ...
-  "scripts": {
-      ...
-      "deploy": "ng deploy --base-href=https://<username>.github.io/angular-introduction/"
-  }
-  ...
-  }
-  ```
+    Προσθήκη του deploy script στο αρχείο package.json
 
-- Αποστολή της εφαρμογής στις σελίδες gh-pages του GitHub
+    {
+    ...
+    "scripts": {
+        ...
+        "deploy": "ng deploy --base-href=https://<username>.github.io/angular-introduction/"
+    }
+    ...
+    }
 
-  ```bash
-  npm run deploy
-  ```
+    Αποστολή της εφαρμογής στις σελίδες gh-pages του GitHub
 
-- Η εφαρμογή είναι διαθέσιμη στη διεύθυνση `https://<username>.github.io/angular-introduction/`
+    npm run deploy
 
-- Ενεργοποίηση του GitHub Pages για το repository `<username>.github.io/angular-introduction`
+    Η εφαρμογή είναι διαθέσιμη στη διεύθυνση https://<username>.github.io/angular-introduction/
 
-- Η εφαρμογή είναι διαθέσιμη στη διεύθυνση `https://<username>.github.io/angular-introduction/`
+    Ενεργοποίηση του GitHub Pages για το repository <username>.github.io/angular-introduction
 
-- Εγκατάσταση του bootstrap
+    Η εφαρμογή είναι διαθέσιμη στη διεύθυνση https://<username>.github.io/angular-introduction/
 
-  ```bash
-  npm install bootstrap
-  ```
+    Εγκατάσταση του bootstrap
 
-- Επεξεργασία του αρχείου `angular.json`
+    npm install bootstrap
 
-  ```json
-  {
-  ...
-  "styles": [
-      "src/styles.css",
-      "node_modules/bootstrap/dist/css/bootstrap.min.css"
-  ],
-  ...
-  }
-  ```
+    Επεξεργασία του αρχείου angular.json
 
-- **Επανεκκίνηση του Angular Project** μετά από κάθε αλλαγή στο αρχείο `angular.json` είναι απαραίτητο να εκκινηθεί ξανά το Angular Project (^C και ξανά `ng serve`)
+    {
+    ...
+    "styles": [
+        "src/styles.css",
+        "node_modules/bootstrap/dist/css/bootstrap.min.css"
+    ],
+    ...
+    }
 
-- Τοπική εγκατάσταση του `prettier` και δημιουργία του αρχείου `.prettierrc`
+    Επανεκκίνηση του Angular Project μετά από κάθε αλλαγή στο αρχείο angular.json είναι απαραίτητο να εκκινηθεί ξανά το Angular Project (^C και ξανά ng serve)
 
-  ```bash
-  npm install --save-dev prettier
-  ```
+    Τοπική εγκατάσταση του prettier και δημιουργία του αρχείου .prettierrc
 
-  ```json
-  {
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
+    npm install --save-dev prettier
+
+    {
+      "overrides": [
+        {
+          "files": "*.html",
+          "options": {
+            "parser": "angular"
+          }
         }
-      }
-    ]
-  }
-  ```
+      ]
+    }
+
